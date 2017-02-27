@@ -13,7 +13,7 @@
         },
         replace: false,
         controller: 'cntrl_viewHome',
-        templateUrl: '../html/view-home.html'
+        templateUrl: '../html/view.home.html'
       };
     })
 
