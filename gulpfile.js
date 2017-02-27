@@ -6,7 +6,8 @@ var gulp = require('gulp'),
     rucksack = require('gulp-rucksack'),
     paths = {
       stylusCore: ['styl/main.styl'],
-      stylusDir: ['styl/*.styl', 'styl/**/*.styl']
+      stylusDir: ['styl/*.styl', 'styl/**/*.styl'],
+      jadeDir: ['jade/*.jade', 'jade/**/*.jade']
     };
 
 gulp.task('stylus', function() {
@@ -22,6 +23,15 @@ gulp.task('stylus', function() {
     .pipe(gulp.dest('css'));
 });
 
+gulp.task('jade', function() {
+  gulp.src(paths.jadeDir)
+    .pipe(jade({
+      pretty: false
+    }))
+    .pipe(gulp.dest('html'))
+});
+
 gulp.task('default', function(){
-  gulp.watch(paths.stylusDir, ['stylus'])
+  gulp.watch(paths.stylusDir, ['stylus']);
+  gulp.watch(paths.jadeDir, ['jade']);
 });
