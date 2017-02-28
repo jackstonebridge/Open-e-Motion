@@ -4,10 +4,14 @@ var gulp = require('gulp'),
     plumber = require('gulp-plumber'),
     autoprefixer = require('gulp-autoprefixer'),
     rucksack = require('gulp-rucksack'),
+    uglify = require('gulp-uglify'),
+    obfuscate = require('gulp-obfuscate'),
+    //swPrecache = require('sw-precache'),
     paths = {
       stylusCore: ['styl/main.styl'],
       stylusDir: ['styl/*.styl', 'styl/**/*.styl'],
-      jadeDir: ['jade/*.jade', 'jade/**/*.jade']
+      jadeDir: ['jade/*.jade', 'jade/**/*.jade'],
+      jsDir: ['js/dev/app.js', 'js/dev/app.directives.js']
     };
 
 gulp.task('stylus', function() {
@@ -31,7 +35,17 @@ gulp.task('jade', function() {
     .pipe(gulp.dest('html'))
 });
 
+gulp.task('js', function () {
+  gulp.src(paths.jsDir)
+    //.pipe(uglify())
+    .pipe(obfuscate({
+      replaceMethod: obfuscate.ZALGO
+    }))
+    .pipe(gulp.dest('js'));
+});
+
 gulp.task('default', function(){
   gulp.watch(paths.stylusDir, ['stylus']);
   gulp.watch(paths.jadeDir, ['jade']);
+  gulp.watch(paths.jsDir, ['js']);
 });
