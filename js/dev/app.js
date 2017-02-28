@@ -2,8 +2,6 @@
 
   ///
 
-  ///
-
   angular
 
     .module('cnt', ['ui.router'])
