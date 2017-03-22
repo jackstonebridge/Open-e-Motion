@@ -14,15 +14,15 @@
           template: '<main view-home></main>'
         })
         .state('trento', {
-          url: '/Trento',
+          url: '/trento',
           template: '<main view-trento></main>'
         })
         .state('rovereto', {
-          url: '/Rovereto',
+          url: '/rovereto',
           template: '<main view-rovereto></main>'
         })
         .state('pergine', {
-          url: '/Pergine',
+          url: '/pergine',
           template: '<main view-pergine></main>'
         })
     })
